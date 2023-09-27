@@ -7,7 +7,7 @@ pipeline {
   agent any
   environment {
     WORKSPACE = "${env.WORKSPACE}"
-    NEXUS_CREDENTIAL_ID = 'Nexus-Credential'
+    NEXUS_CREDENTIAL_ID = 'nexus-credentials'
     SONAR_TOKEN = "SonarQube-Token"
     //NEXUS_USER = "$NEXUS_CREDS_USR"
     //NEXUS_PASSWORD = "$Nexus-Token"
@@ -78,10 +78,10 @@ pipeline {
            nexusArtifactUploader(
               nexusVersion: 'nexus3',
               protocol: 'http',
-              nexusUrl: '172.31.16.85:8081',
+              nexusUrl: '18.216.86.55:8081',
               groupId: 'webapp',
               version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
-              repository: 'maven-project-releases',  //"${NEXUS_REPOSITORY}",
+              repository: 'Maven-Project-snapshot',  //"${NEXUS_REPOSITORY}",
               credentialsId: "${NEXUS_CREDENTIAL_ID}",
               artifacts: [
                   [artifactId: 'webapp',
